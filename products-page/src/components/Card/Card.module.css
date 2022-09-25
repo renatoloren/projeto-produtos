@@ -1,0 +1,54 @@
+.card_wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  background-color: #1E1E1E;
+  margin: 20px 0;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.card_wrapper:hover .delete_product_button {
+  display: block;
+}
+
+
+.delete_product_button{
+  background-color: transparent;
+  color: #fff;
+  display: none;
+  cursor: pointer;
+}
+
+.delete_product_button:hover{
+  opacity: 50%;
+}
+
+.id{
+  color: #737373;
+  font-weight: 500;
+  text-transform: uppercase;
+
+}
+
+.status {
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 1.3em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.valor {
+  color: #03FF4A;
+  font-weight: 600;
+  margin: 15px 0;
+  font-size: 1.3em;
+}
+
+.descricao {
+  text-align: justify;
+}
+
