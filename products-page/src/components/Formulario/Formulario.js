@@ -26,6 +26,23 @@ export const Formulario = () => {
       return null;
     }
 
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    
+    var raw = JSON.stringify({
+      "emailFrom": "isabela.fiap0710@gmail.com",
+      "emailTo": "isabela.fiap0710@gmail.com",
+      "subject": "Cadastro de produto com sucesso",
+      "text": `Nome: ${name.valor}\n Descrição: ${description.valor}\n Valor: R$ ${cost.valor}\n ${isAvailabe? 'Disponível em estoque': 'Indisponível no estoque'}`
+    });
+
+    const sendEmail = await fetch('http://localhost:8080/send-email', {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    });
+
     const rawResponse = await fetch('http://localhost:3001/products', {
       method: 'POST',
       headers: {
@@ -40,7 +57,7 @@ export const Formulario = () => {
       }),
     });
 
-    if (rawResponse.status === 200) {
+    if (rawResponse.status === 200 && sendEmail.status === 200) {
       await setMessage('Produto cadastrado com sucesso!');
       setFiltro([]);
       const timer = setTimeout(() => setMessage(null), 5000);
